@@ -1,0 +1,149 @@
+<!--
+ Copyright (c) 2014, 2020, Oracle and/or its affiliates.
+ The Universal Permissive License (UPL), Version 1.0
+ -->
+<div class="oj-hybrid-padding">	
+          <!-- outer offcanvas wrapper -->
+			<!-- outer offcanvas launch button -->
+			<oj-button display='icons' chroming='half' on-oj-action='[[toggleOuter]]'>
+				<span slot='startIcon' class='oj-fwk-icon-hamburger oj-fwk-icon'></span>
+				Toggle outer offcanvas
+			</oj-button>
+	<div class="oj-offcanvas-outer-wrapper" style="border: 1px solid #d1e6f9; height:100%;min-height: 550px;">
+		<!-- outer start offcanvas -->
+		<div id="oDrawer" class="oj-offcanvas-start oj-panel" style="height: 100%;">
+                
+                  <oj-tab-bar id="hnavlist" 
+                        edge="top"
+                        selection="{{selectedItem}}">
+              <ul>
+                <li id="home">
+                  <a href="#" aria-controls="home-tab-panel" id="home-tab" >
+                    Filter
+                  </a>
+                </li>
+              </ul>
+            </oj-tab-bar>
+        
+            <oj-switcher value="[[selectedItem]]">
+              <div slot="home"
+                   id="home-tab-panel"
+                   role="tabpanel" 
+                   aria-labelledby="home-tab">
+                <div class="demo-tab-content">		
+             <div class="oj-flex-item">    
+                 <oj-label class="refinedleft" id="status_filter_lbl">Status</oj-label>
+                 <oj-checkboxset id="status_filter"  options="{{statusDP}}"
+                    value="{{currentStatus}}" style="padding-bottom: 15px" on-value-changed="[[handleFilterChanged]]">
+                </oj-checkboxset>
+                <oj-label class="refinedleft" id="invtype_filter_lbl">Invoice Category</oj-label>
+                <oj-checkboxset id="invtype_filter" options="{{invoicecatDP}}"
+                    value="{{currentinvtype}}" style="padding-bottom: 15px" on-value-changed="[[handleFilterChanged]]">
+                </oj-checkboxset>
+                 <oj-label class="refinedleft" id="aging_filter_lbl">Aging ( Invoice Date )</oj-label>
+                <oj-checkboxset id="aging_filter" labelled-by="aging_filter_lbl"
+                    value="{{currentAging}}" style="padding-bottom: 15px" on-value-changed="[[handleFilterChanged]]">
+                  <oj-option id="price_opt1" value="lt10">0 - 10 Days</oj-option>
+                  <oj-option id="price_opt2" value="11to20">11 - 20 Days</oj-option>
+                  <oj-option id="price_opt3" value="21to30">21 - 30 Days</oj-option>
+                  <oj-option id="price_opt4" value="31to40">31 - 45 Days</oj-option>
+                  <oj-option id="price_opt5" value="gt50">Greater than 45 Days</oj-option>
+                </oj-checkboxset>
+              </div>
+                </div>
+              </div>
+            </oj-switcher>
+		
+		</div>
+		<!-- main content -->
+		<div id="oMain" style="padding: 10px">
+            <div class="oj-flex">
+              <div class="listings oj-lg-10 oj-md-9 oj-sm-12 oj-flex-item">    
+                <div class="oj-flex">
+                  <div class="oj-lg-6 oj-md-6 oj-sm-12 oj-flex-item">
+                     <oj-label for="sortBy" class="oj-label-inline">Sort by:</oj-label>
+                     <oj-select-one id="sortBy" value="{{currentSort}}" style="max-width:15em" on-value-changed="[[handleSortCriteriaChanged]]">
+                        <oj-option value="lh">Creation Date: Ascending</oj-option>
+                        <oj-option value="hl">Creation Date: Descending</oj-option>
+                        <oj-option value="invoicenum">Invoice Number</oj-option>
+                    </oj-select-one>
+                  </div>
+                  <div class="oj-lg-6 oj-md-6 oj-sm-12 oj-flex-item">
+                    <oj-paging-control id="paging" data="[[myTaskpagingDataSource]]" page-size="5"></oj-paging-control>
+                  </div>
+                </div>
+                <oj-list-view id="listview" aria-label="list using array" 
+                  data="[[myTaskpagingDataSource]]" ,
+                  selection-mode="single">
+                <template slot="itemTemplate" data-oj-as="item">
+                  <div class="oj-flex">
+                      <div class="oj-flex-item" style="width:75%">
+                          <div class="oj-lg-10 oj-md-10 oj-sm-12">
+                              <div class="oj-flex row">
+                                  <div class="oj-lg-4 oj-md-3 oj-sm-12" style="width: 150px">
+                                      <span class="data"><b>Company: </b><span class="details"><oj-bind-text value="[[item.data.Company ]]"></oj-bind-text></span></span>
+                                  </div>
+                                  <div class="oj-lg-4 oj-md-3 oj-sm-12">
+                                      <span class="data"><b>Invoice number: </b><span class="details"><oj-bind-text value="[[item.data.invoicenum]]"></oj-bind-text> Days</span></span>
+                                  </div>
+                                  <div class="oj-lg-4 oj-md-3 oj-sm-12">
+                                      <span class="data"><b>Document Type: </b><span class="details"><oj-bind-text value="[[item.data.documentType]]"></oj-bind-text> Days</span></span>
+                                  </div>
+                              </div>
+                              <div class="listing oj-flex row">
+                                  <div class="oj-lg-4 oj-md-3 oj-sm-12">
+                                      <span class="data"><b>Supplier Name: </b><span><oj-bind-text value="[[item.data.vendorname]]"></oj-bind-text></span></span>
+                                  </div>
+                                  <div class="oj-lg-4 oj-md-3 oj-sm-12">
+                                      <span class="data"><b>Supplier ID: </b><span><oj-bind-text value="[[item.data.vendorid]]"></oj-bind-text></span></span>
+                                  </div>
+                                  <div class="oj-lg-4 oj-md-3 oj-sm-12">
+                                      <span class="data"><b>Amount: </b><span><oj-bind-text value="[[item.data.invoiceamt]]"></oj-bind-text></span></span>
+                                  </div>
+                                  <div class="oj-lg-4 oj-md-3 oj-sm-12" style="width: 450cm">
+                                      <span class="data"><b>PO Number: </b><span><oj-bind-text value="[[item.data.ponumber]]"></oj-bind-text></span></span>
+                                  </div>
+                                  <div class="oj-lg-4 oj-md-3 oj-sm-12">
+                                      <span class="data"><b>Acquired By: </b><span><oj-bind-text value="[[item.data.acquiredbyname]]"></oj-bind-text></span></span>
+                                  </div>
+                                  <div class="oj-lg-4 oj-md-3 oj-sm-12">
+                                      <span class="data"><b>Scan Batch ID: </b><span><oj-bind-text value="[[item.data.scanbatchname]]"></oj-bind-text></span></span>
+                                  </div>
+                                     <div class="oj-lg-4 oj-md-3 oj-sm-12">
+                                      <span class="data"><b>Scanned Date: </b><span><oj-bind-text value="[[item.data.scanDate]]"></oj-bind-text></span></span>
+                                  </div>
+                                  
+                                 
+                                  <div class="oj-lg-4 oj-md-3 oj-sm-12">
+                                      <span class="data"><b>Task Number: </b><span><oj-bind-text value="[[item.data.tasknumber]]"></oj-bind-text></span></span>
+                                  </div>
+                                   <div class="list-cell-item oj-lg-4 oj-md-3 oj-sm-12">
+                                      <span class="data"><b>Status: </b><span><oj-bind-text value="[[item.data.status]]"></oj-bind-text></span></span>
+                                  </div>
+                              </div>
+                          </div>
+                      </div>
+                      <div class="oj-flex-item" >
+                          <div>
+                                   <a data-bind="attr:{href:item.data.url},css:{'link-bg':item.data.url}" target="_blank"> </a>
+                          </div>
+                      </div>
+                      <div class="oj-flex-item" >
+                          <div>
+                          <a href="#" data-bind="css:{'open_invoice-bg':item.data.scan_document_id}" target="_blank"> </a>
+                          </div>
+                      </div>
+                      <div class="oj-flex-item" >
+                          <div>
+                          <a href="#" data-bind="css:{'icon-lock':item.data.acquired_by_name}" target="_blank"> </a>
+                          </div>
+                      </div>
+                  </div>
+              </template>
+          </oj-list-view>
+              </div>
+           </div>
+		</div>
+	</div>
+    </div>
+</div> 

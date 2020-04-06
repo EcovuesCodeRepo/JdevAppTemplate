@@ -1,0 +1,108 @@
+ <div id='buttons-container' class="oj-flex-item oj-dialog-footer">
+   
+        <oj-button id='button2' on-oj-action='[[openf]]' class="oj-button-primary">
+            <span><oj-bind-text >Open Invoice</oj-bind-text></span>
+        </oj-button>
+            <oj-button id='button2' on-oj-action='[[savef]]' class="oj-button-primary">
+            <span><oj-bind-text >Save</oj-bind-text></span>
+        </oj-button>
+          <oj-button id='button2' on-oj-action='[[rejectf]]'  class="oj-button-primary">
+            <span><oj-bind-text>Reject</oj-bind-text></span>
+        </oj-button>
+            <oj-button id='button2' on-oj-action='[[cancelf]]' class="oj-button-primary">
+            <span><oj-bind-text >Cancel</oj-bind-text></span>
+        </oj-button>
+             <oj-button id='button2' on-oj-action='[[nextf]]'  class="oj-button-primary">
+            <span><oj-bind-text >Next Record</oj-bind-text></span>
+        </oj-button>
+       
+        <oj-button id='button2' on-oj-action='[[submitf]]' class="oj-button-primary">
+            <span><oj-bind-text >Submit</oj-bind-text></span>
+        </oj-button>
+        
+    </div>
+    <div class="invheaderbg oj-hybrid-applayout-header">
+        <span class="oj-navigationlist-item-icon circle-strokes::after circle-strokes invHeader"></span><h4 class="head"><span>Invoice</span></h4>
+    </div>    
+  <div class="oj-flex-item oj-panel">
+  
+ <oj-form-layout id="ofl1" label-edge="start" max-columns="3">
+          <oj-label id="inputgroup" class="detail" label-id="inputgrouplabel">*Legal Entity</oj-label>
+              <oj-combobox-one id="legalEntity" value="{{legalEntityVal}}" required
+                                  options="[[legalEntityoptions]]" style="max-width:18em">
+                  </oj-combobox-one>
+            
+             <oj-label id="inputgroup" class="detail" label-id="inputgrouplabel">PO Number</oj-label>
+                   <oj-combobox-one data="[[poOptions]]"
+                value="{{poValue}}"
+                 style="max-width:18em">
+              </oj-combobox-one>
+               <oj-label id="inputgroup" class="detail" label-id="inputgrouplabel">Supplier ID</oj-label>
+                    <oj-input-text value="{{Supidval}}"></oj-input-text>
+                    <oj-label id="inputgroup" class="detail" label-id="inputgrouplabel">Supplier Name</oj-label>
+              <oj-combobox-one id="legalEntity" value="{{legalEntityVal}}" 
+                                  options="[[legalEntityoptions]]" style="max-width:18em">
+                  </oj-combobox-one>
+                  <oj-label id="inputgroup" class="detail" label-id="inputgrouplabel">*Document Type</oj-label>
+              <oj-combobox-one id="legalEntity" value="{{legalEntityVal}}" 
+                                  options="[[legalEntityoptions]]" style="max-width:18em">
+                  </oj-combobox-one>   
+                  <oj-label id="inputgroup" class="detail" label-id="inputgrouplabel">Document Number</oj-label>
+                  <oj-input-text value="{{taskNumberval}}" ></oj-input-text>
+                   <oj-label id="inputgroup" class="detail" label-id="inputgrouplabel">Invoice Number</oj-label>
+                  <oj-input-text value="{{taskNumberval}}"></oj-input-text>
+                  <oj-label id="inputgroup" class="detail" label-id="inputgrouplabel">Task Number</oj-label>
+                  <oj-input-text value="{{taskNumberval}}"></oj-input-text>
+                   <oj-label id="inputgroup" class="detail" label-id="inputgrouplabel">Tax</oj-label>
+                  <oj-input-number value="{{taskNumberval}}" ></oj-input-number>
+                  <oj-label id="inputgroup" class="detail" label-id="inputgrouplabel">Freight</oj-label>
+                   <oj-input-number value="{{taskNumberval}}" ></oj-input-number>
+                   <oj-label id="inputgroup" class="detail" label-id="inputgrouplabel">Amount</oj-label>
+                    <oj-input-number value=20 ></oj-input-number>
+                    <oj-label id="inputgroup" class="detail" label-id="inputgrouplabel">GL Account</oj-label>
+                     <oj-input-text value="{{taskNumberval}}" ></oj-input-text>
+                     <oj-label id="inputgroup" class="detail" label-id="inputgrouplabel">Exception Type</oj-label>
+              <oj-combobox-one id="legalEntity" value="{{legalEntityVal}}" 
+                                  options="[[legalEntityoptions]]" style="max-width:18em">
+                  </oj-combobox-one>
+                    <oj-label id="inputgroup" class="detail" label-id="inputgrouplabel">Payment Batch</oj-label>
+                   <oj-input-text value="{{taskNumberval}}"></oj-input-text>
+                   <oj-label id="inputgroup" class="detail" label-id="inputgrouplabel">Payment Date</oj-label>
+                   <oj-input-date id="date" value='{{dateValue}}'>
+            </oj-input-date>
+             <oj-label id="inputgroup" class="detail" label-id="inputgrouplabel">Invoice Image Attachment</oj-label>
+                <oj-input-text value="{{taskNumberval}}"></oj-input-text>
+                  <oj-label id="inlineLabelId" class="detail" slot="label" for="inlineSet">Receiving</oj-label>
+               <oj-checkboxset>
+                <oj-option value="desktop"></oj-option>
+               
+              </oj-checkboxset>
+                 <oj-label id="inputgroup" class="detail" label-id="inputgrouplabel">Approver</oj-label>
+              <oj-combobox-one id="legalEntity" value="{{legalEntityVal}}" 
+                                  options="[[legalEntityoptions]]" style="max-width:18em">
+                  </oj-combobox-one>
+                   <oj-label id="inputgroup" class="detail" label-id="inputgrouplabel">Supervisor </oj-label>
+              <oj-combobox-one id="legalEntity" value="{{legalEntityVal}}" 
+                                  options="[[legalEntityoptions]]" style="max-width:18em">
+                  </oj-combobox-one>
+                   <oj-label id="inputgroup" class="detail" label-id="inputgrouplabel">Manager </oj-label>
+              <oj-combobox-one id="legalEntity" value="{{legalEntityVal}}" 
+                                  options="[[legalEntityoptions]]" style="max-width:18em">
+                  </oj-combobox-one>
+                  </oj-form-layout>
+                  
+</div>
+<div class="oj-flex-item oj-panel">
+<oj-form-layout id="ofl1" label-edge="start" max-columns="3">
+<oj-label id="inputgroup" class="detail" label-id="inputgrouplabel">Scan Document ID</oj-label>
+                  <oj-input-text value="{{taskNumberval}}" readonly ></oj-input-text>
+                  <oj-label id="inputgroup" class="detail" label-id="inputgrouplabel">Scan Batch ID</oj-label>
+                  <oj-input-text value="{{taskNumberval}}" readonly ></oj-input-text>
+                  <oj-label id="inputgroup" class="detail" label-id="inputgrouplabel">Scan Date</oj-label>
+                   <oj-input-date id="date" value='{{dateValue}}'readonly>
+            </oj-input-date>
+             <oj-label id="inputgroup" class="detail" label-id="inputgrouplabel">Assigned To</oj-label>
+                  <oj-input-text value="{{taskNumberval}}" readonly ></oj-input-text>
+</oj-form-layout>
+
+                  </div>

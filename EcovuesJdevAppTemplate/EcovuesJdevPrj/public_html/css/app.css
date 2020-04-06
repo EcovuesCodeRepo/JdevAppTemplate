@@ -5,3 +5,47 @@
     Description:
         This is where any of your application specific styles should be included
 */
+.link-bg {
+    background-image: url("images/Functional_icons/func_attachment_32.png");
+    width: 20px;
+    height: 20px; 
+    display: inline-block;
+    background-repeat: no-repeat;
+    background-position: top left;
+    background-size: 100%;
+    }
+.icon-lock{
+    background-image: url("images/Functional_icons/func_lock01_32@2x.png");
+    width: 20px;
+    height: 20px; 
+    display: inline-block;
+    background-repeat: no-repeat;
+    background-position: top left;
+    background-size: 100%; }
+    
+.icon-edit:before {
+    content: url("../css/images/eco_icons/func_edit_16_ena.png");
+                  }
+.details{
+    color: #007CBA;
+}
+
+                  
+.headerStyle{
+    background:#309fdb;
+    color:white;
+    text-align:center;
+    height:100%;
+}
+.detail{
+    color: #007CBA;
+}
+.invheaderbg{
+    background-color: #309fdb;
+}
+.head{
+    color: #ffffff;
+}
+.head1{
+    color: #3baf85;
+}
